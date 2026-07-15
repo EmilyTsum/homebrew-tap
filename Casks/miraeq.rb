@@ -1,6 +1,6 @@
 cask "miraeq" do
-  version "0.3.0"
-  sha256 "914b6886d269a0d74caa1cb96bc6a546a45485a5e981a75c7ef796235d4682bd"
+  version "0.4.0"
+  sha256 "b32234f6ef5e9a4ae9f67feac5c146d98fd54bac55374a16ebe73c1e076b84db"
 
   url "https://github.com/EmilyTsum/MiraEQ/releases/download/v#{version}/MiraEQ-#{version}.dmg"
   name "MiraEQ"
