@@ -1,6 +1,6 @@
 cask "playcover-ptmc" do
-  version "0.1.11"
-  sha256 "0a5ac29dd362fa0549ecd2a92c576da4006c4baab86cdfac8c71ee5d7bb00c36"
+  version "0.1.12"
+  sha256 "73fdc41fecfef09e657d70c75d4683e641c3981cb9904b9279044e38d0bdc80d"
 
   url "https://github.com/EmilyTsum/PlayCover/releases/download/ptmc-v#{version}/PlayCover-PTMC.dmg"
   name "PlayCover PTMC"
@@ -19,6 +19,14 @@ cask "playcover-ptmc" do
 
       Configure capture per game from:
         App Settings -> Capture
+
+      While an eligible PTMC game is running:
+        Option-Command-R        Start/Stop recording
+        Shift-Option-Command-R  Stop/finalize only
+
+      PlayCover stays running after its last window closes so the global shortcuts
+      and host-side game-audio capture remain available. Quit PlayCover explicitly
+      when you are finished.
     EOS
   end
 end
