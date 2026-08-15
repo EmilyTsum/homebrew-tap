@@ -24,6 +24,11 @@ jobs:
           echo "Resolved app: $(python3 -c 'import os; print(os.path.realpath("/Applications/PlayCover.app"))')"
           test -f /Applications/PlayCover.app/Contents/MacOS/PlayCover
           test -f /Applications/PlayCover.app/Contents/Frameworks/PlayTools.framework/PlayTools
+          HOST=/Applications/PlayCover.app/Contents/MacOS/PlayCover
+          strings "$HOST" | grep -F 'PTMC recording start requested via'
+          strings "$HOST" | grep -F 'PTMC global hotkey registration incomplete'
+          strings "$HOST" | grep -F 'begin_record'
+          strings "$HOST" | grep -F 'end_record'
           strings /Applications/PlayCover.app/Contents/Frameworks/PlayTools.framework/PlayTools | grep -F 'io.playcover.ptmc.start'
           strings /Applications/PlayCover.app/Contents/Frameworks/PlayTools.framework/PlayTools | grep -F 'PTMC_OUTPUT_DIR'
           strings /Applications/PlayCover.app/Contents/Frameworks/PlayTools.framework/PlayTools | grep -F 'prores422lt'
