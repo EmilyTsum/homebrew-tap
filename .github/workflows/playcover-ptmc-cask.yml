@@ -1,0 +1,28 @@
+name: Test PlayCover PTMC cask
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - Casks/playcover-ptmc.rb
+      - .github/workflows/playcover-ptmc-cask.yml
+  workflow_dispatch:
+
+jobs:
+  install:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Install from public tap
+        run: |
+          brew untap EmilyTsum/tap 2>/dev/null || true
+          brew tap EmilyTsum/tap
+          brew install --cask playcover-ptmc
+      - name: Validate installed app
+        run: |
+          test -d /Applications/PlayCover.app
+          test -f /Applications/PlayCover.app/Contents/MacOS/PlayCover
+          test -f /Applications/PlayCover.app/Contents/Frameworks/PlayTools.framework/PlayTools
+          strings /Applications/PlayCover.app/Contents/Frameworks/PlayTools.framework/PlayTools | grep -F 'io.playcover.ptmc.start'
+          strings /Applications/PlayCover.app/Contents/Frameworks/PlayTools.framework/PlayTools | grep -F 'PTMC_OUTPUT_DIR'
+          codesign --verify --deep --strict /Applications/PlayCover.app
