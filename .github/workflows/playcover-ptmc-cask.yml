@@ -26,6 +26,8 @@ jobs:
           test -f /Applications/PlayCover.app/Contents/Frameworks/PlayTools.framework/PlayTools
           strings /Applications/PlayCover.app/Contents/Frameworks/PlayTools.framework/PlayTools | grep -F 'io.playcover.ptmc.start'
           strings /Applications/PlayCover.app/Contents/Frameworks/PlayTools.framework/PlayTools | grep -F 'PTMC_OUTPUT_DIR'
+          strings /Applications/PlayCover.app/Contents/Frameworks/PlayTools.framework/PlayTools | grep -F 'prores422lt'
+          strings /Applications/PlayCover.app/Contents/Frameworks/PlayTools.framework/PlayTools | grep -F 'frame hooks are dormant until Start'
           codesign --verify --deep --strict /Applications/PlayCover.app
       - name: Runtime startup smoke test
         run: |

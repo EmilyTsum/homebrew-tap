@@ -1,10 +1,10 @@
 cask "playcover-ptmc" do
-  version "0.1.4"
-  sha256 "b5d8fa5de64262e16f9975b1a2dcf396d873e52182d8599d311e882a92b66b16"
+  version "0.1.5"
+  sha256 "1ef84be9bba16a708c32489dba9d8d38c9c45b25978e24eaca004ec0c0280375"
 
   url "https://github.com/EmilyTsum/PlayCover/releases/download/ptmc-v#{version}/PlayCover-PTMC.dmg"
   name "PlayCover PTMC"
-  desc "PlayCover nightly fork with pre-compositor Metal HEVC capture"
+  desc "PlayCover nightly fork with low-overhead pre-compositor Metal HEVC/ProRes capture"
   homepage "https://github.com/EmilyTsum/PlayCover"
 
   depends_on arch: :arm64
