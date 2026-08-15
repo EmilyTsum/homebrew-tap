@@ -16,8 +16,7 @@ jobs:
       - name: Install from public tap
         run: |
           brew untap EmilyTsum/tap 2>/dev/null || true
-          brew tap EmilyTsum/tap
-          brew install --cask playcover-ptmc
+          brew install --cask EmilyTsum/tap/playcover-ptmc
       - name: Validate installed app
         run: |
           test -d /Applications/PlayCover.app
