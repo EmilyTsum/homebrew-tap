@@ -1,6 +1,6 @@
 cask "playcover-ptmc" do
-  version "0.1.12"
-  sha256 "73fdc41fecfef09e657d70c75d4683e641c3981cb9904b9279044e38d0bdc80d"
+  version "0.1.13"
+  sha256 "cccbbfe092e7344b99d84aefc745af62c2112082b66389324a58229f22170dd3"
 
   url "https://github.com/EmilyTsum/PlayCover/releases/download/ptmc-v#{version}/PlayCover-PTMC.dmg"
   name "PlayCover PTMC"
