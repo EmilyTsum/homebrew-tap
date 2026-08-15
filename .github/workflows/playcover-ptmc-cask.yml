@@ -27,3 +27,16 @@ jobs:
           strings /Applications/PlayCover.app/Contents/Frameworks/PlayTools.framework/PlayTools | grep -F 'io.playcover.ptmc.start'
           strings /Applications/PlayCover.app/Contents/Frameworks/PlayTools.framework/PlayTools | grep -F 'PTMC_OUTPUT_DIR'
           codesign --verify --deep --strict /Applications/PlayCover.app
+      - name: Runtime startup smoke test
+        run: |
+          set -euo pipefail
+          sw_vers
+          open -a /Applications/PlayCover.app
+          sleep 8
+          pid="$(pgrep -x PlayCover | head -n 1)"
+          test -n "$pid"
+          ps -o pid,ppid,state,%cpu,%mem,etime,command -p "$pid"
+          /usr/bin/sample "$pid" 1 1 -file /tmp/playcover-sample.txt >/dev/null 2>&1 || true
+          echo '--- main-thread sample ---'
+          awk '/Call graph:/{show=1} show{print} /Binary Images:/{exit}' /tmp/playcover-sample.txt | head -n 180 || true
+          kill "$pid" || true
