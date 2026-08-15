@@ -1,6 +1,6 @@
 cask "playcover-ptmc" do
-  version "0.1.1"
-  sha256 "836dc0556e1acfde5a646416fd86c11b2b3edadd4913723ea8d53f20e9d207e4"
+  version "0.1.2"
+  sha256 "5e0fb3b09e43001d588f00ef28e45ab48e9c2725a1c4d10305e459e5fa809d04"
 
   url "https://github.com/EmilyTsum/PlayCover/releases/download/ptmc-v#{version}/PlayCover-PTMC.dmg"
   name "PlayCover PTMC"
@@ -18,7 +18,7 @@ cask "playcover-ptmc" do
         xattr -cr /Applications/PlayCover.app
 
       Configure capture per game from:
-        App Settings -> Metal Capture
+        App Settings -> Capture
     EOS
   end
 end

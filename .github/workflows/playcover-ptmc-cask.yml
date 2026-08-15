@@ -20,6 +20,8 @@ jobs:
       - name: Validate installed app
         run: |
           test -d /Applications/PlayCover.app
+          echo "Installed app: $(ls -ld /Applications/PlayCover.app)"
+          echo "Resolved app: $(python3 -c 'import os; print(os.path.realpath("/Applications/PlayCover.app"))')"
           test -f /Applications/PlayCover.app/Contents/MacOS/PlayCover
           test -f /Applications/PlayCover.app/Contents/Frameworks/PlayTools.framework/PlayTools
           strings /Applications/PlayCover.app/Contents/Frameworks/PlayTools.framework/PlayTools | grep -F 'io.playcover.ptmc.start'
