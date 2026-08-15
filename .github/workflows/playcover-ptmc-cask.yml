@@ -31,10 +31,13 @@ jobs:
         run: |
           set -euo pipefail
           sw_vers
-          open -a /Applications/PlayCover.app
+          /Applications/PlayCover.app/Contents/MacOS/PlayCover >/tmp/playcover-stdout.log 2>&1 &
+          pid="$!"
           sleep 8
-          pid="$(pgrep -x PlayCover | head -n 1)"
-          test -n "$pid"
+          if ! kill -0 "$pid" 2>/dev/null; then
+            cat /tmp/playcover-stdout.log
+            exit 1
+          fi
           ps -o pid,ppid,state,%cpu,%mem,etime,command -p "$pid"
           /usr/bin/sample "$pid" 1 1 -file /tmp/playcover-sample.txt >/dev/null 2>&1 || true
           echo '--- main-thread sample ---'
